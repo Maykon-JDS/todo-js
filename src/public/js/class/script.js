@@ -61,3 +61,15 @@ function showTask(){
 }
 
 showTask();
+
+inputBox.addEventListener("keypress", function(e){
+
+    if(e.key == "Enter"){
+
+        e.preventDefault();
+        
+        document.querySelector("#button-input-box").click();
+    
+    }
+
+}) 
