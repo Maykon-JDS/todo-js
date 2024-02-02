@@ -2,6 +2,14 @@ const inputBox = document.getElementById("input-box");
 
 const listContainer = document.getElementById("list-container");
 
+const container = document.querySelector(".container");
+
+function toggleMode(){
+
+    container.classList.toggle("dark-mode");
+
+}
+
 function addTask()
 {
 
