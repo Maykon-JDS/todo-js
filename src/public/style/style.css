@@ -37,9 +37,12 @@
   border-radius: 10px;
 }
 
-.dark-mode .todo-app {
-  background: #474747;
+.todo-app {
   transition: 1.5s;
+}
+
+.dark-mode .todo-app {
+  background: #121214;
 }
 
 .todo-app h2 {
@@ -68,6 +71,14 @@
   margin-bottom: 25px;
 }
 
+.row {
+  transition: 1.5s;
+}
+
+.dark-mode .row {
+  background-color: #343434;
+}
+
 input {
   flex: 1;
   border: none;
@@ -75,6 +86,10 @@ input {
   background: transparent;
   padding: 10px;
   font-weight: 14px;
+}
+
+.dark-mode input {
+  color: #fff;
 }
 
 button {
@@ -86,6 +101,20 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 40px;
+}
+
+button:hover {
+  background: #ad3c30;
+  transition: 150ms;
+}
+
+.dark-mode button {
+  background: #00D24E;
+  color: #121214;
+}
+
+.dark-mode button:hover {
+  background: #00a53d;
 }
 
 ul li {
