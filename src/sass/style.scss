@@ -1,3 +1,5 @@
+@use "_property.scss";
+
 * {
   margin: 0;
 
@@ -6,18 +8,6 @@
   font-family: "poppins", sans-serif;
 
   box-sizing: border-box;
-}
-
-@property --color-linear-gradient1 {
-  syntax: "<color>";
-  initial-value: #153667;
-  inherits: false;
-}
-
-@property --color-linear-gradient2 {
-  syntax: "<color>";
-  initial-value: #4e085f;
-  inherits: false;
 }
 
 .container {

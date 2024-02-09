@@ -1,10 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "poppins", sans-serif;
-  box-sizing: border-box;
+@property --color-border-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #30363d;
 }
-
+@property --color-background-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0d1117;
+}
+@property --color-border-light {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #30363d;
+}
+@property --color-background-light {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0d1117;
+}
 @property --color-linear-gradient1 {
   syntax: "<color>";
   initial-value: #153667;
@@ -15,6 +28,13 @@
   initial-value: #4e085f;
   inherits: false;
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+
 .container {
   width: 100%;
   min-height: 100vh;
