@@ -1,0 +1,58 @@
+@property --color-border-dark {
+
+    syntax: "<color>";
+
+    inherits: false;
+
+    initial-value: #30363d;
+
+}
+
+@property --color-background-dark {
+
+    syntax: "<color>";
+
+    inherits: false;
+
+    initial-value: #0d1117;
+
+}
+
+@property --color-border-light {
+
+    syntax: "<color>";
+
+    inherits: false;
+
+    initial-value: #30363d;
+}
+
+@property --color-background-light {
+
+    syntax: "<color>";
+
+    inherits: false;
+
+    initial-value: #0d1117;
+
+}
+
+@property --color-linear-gradient1 {
+    
+    syntax: "<color>";
+
+    initial-value: #153667;
+    
+    inherits: false;
+
+}
+  
+@property --color-linear-gradient2 {
+
+    syntax: "<color>";
+
+    initial-value: #4e085f;
+
+    inherits: false;
+
+}

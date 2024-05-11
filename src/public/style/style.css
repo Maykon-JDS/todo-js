@@ -1,3 +1,33 @@
+@property --color-border-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #30363d;
+}
+@property --color-background-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0d1117;
+}
+@property --color-border-light {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #30363d;
+}
+@property --color-background-light {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0d1117;
+}
+@property --color-linear-gradient1 {
+  syntax: "<color>";
+  initial-value: #153667;
+  inherits: false;
+}
+@property --color-linear-gradient2 {
+  syntax: "<color>";
+  initial-value: #4e085f;
+  inherits: false;
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +38,14 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #153667, #4e085f);
+  background-image: linear-gradient(135deg, var(--color-linear-gradient1), var(--color-linear-gradient2));
   padding: 10px;
+  transition: --color-linear-gradient1 1.5s, --color-linear-gradient2 1.5s;
+}
+
+.container.dark-mode {
+  --color-linear-gradient1: #111111;
+  --color-linear-gradient2: #000000;
 }
 
 .todo-app {
@@ -21,11 +57,23 @@
   border-radius: 10px;
 }
 
+.todo-app {
+  transition: 1.5s;
+}
+
+.dark-mode .todo-app {
+  background: #121214;
+}
+
 .todo-app h2 {
   color: #002765;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+}
+
+.dark-mode .todo-app h2 {
+  color: #fff;
+  transition: 1.5s;
 }
 
 .todo-app h2 img {
@@ -43,6 +91,14 @@
   margin-bottom: 25px;
 }
 
+.row {
+  transition: 1.5s;
+}
+
+.dark-mode .row {
+  background-color: #343434;
+}
+
 input {
   flex: 1;
   border: none;
@@ -50,6 +106,10 @@ input {
   background: transparent;
   padding: 10px;
   font-weight: 14px;
+}
+
+.dark-mode input {
+  color: #fff;
 }
 
 button {
@@ -61,6 +121,20 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 40px;
+}
+
+button:hover {
+  background: #ad3c30;
+  transition: 150ms;
+}
+
+.dark-mode button {
+  background: #00D24E;
+  color: #121214;
+}
+
+.dark-mode button:hover {
+  background: #00a53d;
 }
 
 ul li {
@@ -109,6 +183,97 @@ ul li span {
 
 ul li span:hover {
   background: #edeef0;
+}
+
+#toggle-mode label {
+  width: 120px;
+  height: 30px;
+  position: relative;
+  display: block;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+#toggle-mode label:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-mode input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#toggle-mode input:checked + label {
+  background: #242424;
+}
+
+#toggle-mode input:checked + label:after {
+  left: 115px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+#toggle-mode label,
+label:after {
+  transition: 0.5s;
+}
+
+#toggle-mode label:active:after {
+  width: 40px;
+}
+
+#toggle-mode label svg {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 9px;
+  z-index: 100;
+}
+
+#toggle-mode label svg.sun {
+  left: 9px;
+  fill: #fff;
+  transition: 0.3s;
+}
+
+#toggle-mode label svg.moon {
+  left: 100px;
+  fill: #7e7e7e;
+  transition: 0.3s;
+}
+
+input:checked + label svg.sun path {
+  fill: #7e7e7e;
+}
+
+input:checked + label svg.moon path {
+  fill: #fff;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#darkmode-toggle {
+  position: absolute;
+}
+
+.dark-mode .content {
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

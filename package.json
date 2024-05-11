@@ -9,5 +9,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "scripts": {
+    "build": "sass -w src/sass/style.scss:src/public/style/style.css"
   }
 }
