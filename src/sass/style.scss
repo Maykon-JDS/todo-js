@@ -1,196 +1,365 @@
-*{
+@use "_property.scss";
 
-    margin: 0;
-    
-    padding: 0;
-    
-    font-family: 'poppins', sans-serif; 
+* {
+  margin: 0;
 
-    box-sizing: border-box;
+  padding: 0;
 
+  font-family: "poppins", sans-serif;
+
+  box-sizing: border-box;
 }
 
-.container{
+.container {
+  width: 100%;
 
-    width: 100%;
+  min-height: 100vh;
 
-    min-height: 100vh;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-linear-gradient1),
+    var(--color-linear-gradient2)
+  );
 
-    background: linear-gradient(135deg, #153667, #4e085f);
-    
-    padding: 10px;
+  padding: 10px;
+
+  transition: --color-linear-gradient1 1.5s, --color-linear-gradient2 1.5s;
+}
+
+.container.dark-mode {
+  --color-linear-gradient1: #111111;
+
+  --color-linear-gradient2: #000000;
+}
+
+.todo-app {
+
+  width: 100%;
+
+  max-width: 540px;
+
+  background: #fff;
+
+  margin: 100px auto 20px;
+
+  padding: 40px 30px 70px;
+
+  border-radius: 10px;
 
 }
 
 .todo-app {
 
-    width: 100%;
+transition: 1.5s;
 
-    max-width: 540px;
+}
 
-    background: #fff;
+.dark-mode .todo-app {
 
-    margin: 100px auto 20px;
-
-    padding: 40px 30px 70px;
-
-    border-radius: 10px;
+  background: #121214;
 
 }
 
 .todo-app h2 {
+  color: #002765;
 
-    color: #002765;
+  display: flex;
 
-    display: flex;
+  align-items: center;
+}
 
-    align-items: center;
+.dark-mode .todo-app h2 {
+  color: #fff;
 
-    margin-bottom: 20px;
+  transition: 1.5s;
 
 }
 
 .todo-app h2 img {
+  width: 30px;
 
-    width: 30px;
-
-    margin-left: 10px;
-
+  margin-left: 10px;
 }
 
 .row {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: space-around;
 
-    justify-content: space-around;
+  background-color: #edeef0;
 
-    background-color: #edeef0;
+  border-radius: 30px;
 
-    border-radius: 30px;
+  padding-left: 20px;
 
-    padding-left: 20px;
+  margin-bottom: 25px;
+}
 
-    margin-bottom: 25px;
+.row {
+  transition: 1.5s;
+}
+
+.dark-mode .row {
+
+  background-color: #343434;
 
 }
 
 input {
+  flex: 1;
 
-    flex: 1;
+  border: none;
 
-    border: none;
+  outline: none;
 
-    outline: none;
+  background: transparent;
 
-    background: transparent;
+  padding: 10px;
 
-    padding: 10px;
-
-    font-weight: 14px;
-
-}
-
-button{
-
-    border: none;
-
-    outline: none;
-
-    padding: 16px 50px;
-
-    background: #ff5945;
-
-    color: #fff;
-
-    font-size: 16px;
-
-    cursor: pointer;
-    
-    border-radius: 40px;
+  font-weight: 14px;
 
 }
 
-ul li{
+.dark-mode input {
 
-    list-style: none;
+color: #fff;
 
-    font-size: 17px;
+}
 
-    padding: 12px 8px 12px 50px;
+button {
+  border: none;
 
-    user-select: none;
+  outline: none;
 
-    cursor: pointer;
+  padding: 16px 50px;
 
-    position: relative;
-    
+  background: #ff5945;
+
+  color: #fff;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  border-radius: 40px;
+}
+
+button:hover {
+
+  background: #ad3c30;
+
+  transition: 150ms;
+
+}
+
+.dark-mode button {
+
+  background: #00D24E;
+
+  color: #121214;
+
+}
+
+.dark-mode button:hover {
+
+  background: #00a53d;
+
+}
+
+ul li {
+  list-style: none;
+
+  font-size: 17px;
+
+  padding: 12px 8px 12px 50px;
+
+  user-select: none;
+
+  cursor: pointer;
+
+  position: relative;
 }
 
 ul li::before {
+  content: "";
 
-    content: '';
+  position: absolute;
 
-    position: absolute;
+  height: 28px;
 
-    height: 28px;
+  width: 28px;
 
-    width: 28px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background-image: url(../imgs/unchecked.png);
 
-    background-image: url(../imgs/unchecked.png);
+  background-size: cover;
 
-    background-size: cover;
+  background-position: center;
 
-    background-position: center;
+  top: 12px;
 
-    top: 12px;
-
-    left: 8px;
+  left: 8px;
 }
 
-ul li.checked{
+ul li.checked {
+  color: #555;
 
-    color: #555;
-
-    text-decoration: line-through;
-
+  text-decoration: line-through;
 }
 
 ul li.checked::before {
-
-    background-image: url(../imgs/checked.png);
-
+  background-image: url(../imgs/checked.png);
 }
 
 ul li span {
+  position: absolute;
 
-    position: absolute;
-    
-    right: 0;
-    
-    top: 5px;
+  right: 0;
 
-    width: 40px;
+  top: 5px;
 
-    height: 40px;
+  width: 40px;
 
-    font-size: 22px;
+  height: 40px;
 
-    color: #555;
+  font-size: 22px;
 
-    line-height: 40px;
+  color: #555;
 
-    text-align: center;
+  line-height: 40px;
 
-    border-radius: 50%;
+  text-align: center;
 
+  border-radius: 50%;
 }
 
 ul li span:hover {
+  background: #edeef0;
+}
 
-    background: #edeef0;
+#toggle-mode label {
+  width: 120px;
+
+  height: 30px;
+
+  position: relative;
+
+  display: block;
+
+  background: #ebebeb;
+
+  border-radius: 200px;
+
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+
+  cursor: pointer;
+}
+
+#toggle-mode label:after {
+  content: "";
+
+  width: 20px;
+
+  height: 20px;
+
+  position: absolute;
+
+  top: 5px;
+
+  left: 5px;
+
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+
+  border-radius: 180px;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-mode input {
+  width: 0;
+
+  height: 0;
+
+  visibility: hidden;
+}
+
+#toggle-mode input:checked + label {
+  background: #242424;
+}
+
+#toggle-mode input:checked + label:after {
+  left: 115px;
+
+  transform: translateX(-100%);
+
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+#toggle-mode label,
+label:after {
+  transition: 0.5s;
+}
+
+#toggle-mode label:active:after {
+  width: 40px;
+}
+
+#toggle-mode label svg {
+  position: absolute;
+
+  width: 12px;
+
+  height: 12px;
+
+  top: 9px;
+
+  z-index: 100;
+}
+
+#toggle-mode label svg.sun {
+  left: 9px;
+
+  fill: #fff;
+
+  transition: 0.3s;
+}
+
+#toggle-mode label svg.moon {
+  left: 100px;
+
+  fill: #7e7e7e;
+
+  transition: 0.3s;
+}
+
+input:checked + label svg.sun path {
+  fill: #7e7e7e;
+}
+
+input:checked + label svg.moon path {
+  fill: #fff;
+}
+
+#header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+#darkmode-toggle {
+  position: absolute;
+}
+
+.dark-mode .content {
+
+  color: #fff;
 
 }
