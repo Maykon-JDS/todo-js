@@ -11,6 +11,7 @@
     }
   },
   "scripts": {
-    "build": "sass -w src/sass/style.scss:src/public/style/style.css"
+    "build": "sass -w src/sass/style.scss:src/public/style/style.css",
+    "docker-compose-build": "docker compose -f docker/docker-compose.yml up -d"
   }
 }
