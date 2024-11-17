@@ -38,4 +38,4 @@ jobs:
       run: ls ${{ github.workspace }}
     - run: echo "${{ job.status }}."
     - name: Getting the latest version
-      run: gh api repos/{owner}/{repo}/releases
+      run: gh api repos/{owner}/{repo}/releases/latest
