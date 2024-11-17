@@ -23,9 +23,9 @@ jobs:
     # working-directory: Permite que você execute comandos em um diretório de trabalho específico.
     # matrix: Permite criar matrizes de configuração para executar a mesma etapa com várias combinações de valores.
     # needs: Permite que uma etapa dependa da conclusão de uma ou mais etapas anteriores.
-    # shell: Permite que você especifique o interpretador de shell a ser usado ao executar comandos.
-      # - env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # shell: Permite que você especifique o interpretador de shell a ser usado ao executar comandos.  
+    - env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
