@@ -39,49 +39,39 @@
   width: 100%;
   min-height: 100vh;
   background-image: linear-gradient(135deg, var(--color-linear-gradient1), var(--color-linear-gradient2));
-  padding: 10px;
   transition: --color-linear-gradient1 1.5s, --color-linear-gradient2 1.5s;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
-
-.container.dark-mode {
-  --color-linear-gradient1: #111111;
-  --color-linear-gradient2: #000000;
-}
-
-.todo-app {
-  width: 100%;
+.container .todo-app {
+  width: 80%;
   max-width: 540px;
   background: #fff;
   margin: 100px auto 20px;
-  padding: 40px 30px 70px;
+  padding: 40px 20px 70px;
   border-radius: 10px;
-}
-
-.todo-app {
+  min-height: 195px;
+  display: grid;
+  height: min-content;
   transition: 1.5s;
 }
-
-.dark-mode .todo-app {
-  background: #121214;
+@media (max-width: 1270px) {
+  .container .todo-app {
+    padding: 40px 4vw 70px;
+  }
 }
-
-.todo-app h2 {
+.container .todo-app h2 {
   color: #002765;
   display: flex;
   align-items: center;
 }
-
-.dark-mode .todo-app h2 {
-  color: #fff;
-  transition: 1.5s;
-}
-
-.todo-app h2 img {
+.container .todo-app h2 img {
   width: 30px;
   margin-left: 10px;
 }
-
-.row {
+.container .todo-app .row {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -89,14 +79,25 @@
   border-radius: 30px;
   padding-left: 20px;
   margin-bottom: 25px;
+  transition: 1.5s;
+  position: relative;
 }
-
-.row {
+.container.dark-mode {
+  --color-linear-gradient1: #111111;
+  --color-linear-gradient2: #000000;
+}
+.container.dark-mode .todo-app {
+  background: #121214;
+}
+.container.dark-mode .todo-app h2 {
+  color: #fff;
   transition: 1.5s;
 }
-
-.dark-mode .row {
+.container.dark-mode .todo-app .row {
   background-color: #343434;
+}
+.container.dark-mode .content {
+  color: #fff;
 }
 
 input {
@@ -106,6 +107,7 @@ input {
   background: transparent;
   padding: 10px;
   font-weight: 14px;
+  width: 100%;
 }
 
 .dark-mode input {
@@ -115,35 +117,37 @@ input {
 button {
   border: none;
   outline: none;
-  padding: 16px 50px;
   background: #ff5945;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
   border-radius: 40px;
+  position: relative;
+  height: 50px;
+  width: 40%;
 }
-
 button:hover {
   background: #ad3c30;
   transition: 150ms;
 }
 
-.dark-mode button {
+button .dark-mode button {
   background: #00D24E;
   color: #121214;
 }
-
-.dark-mode button:hover {
+button .dark-mode button:hover {
   background: #00a53d;
 }
 
 ul li {
   list-style: none;
   font-size: 17px;
-  padding: 12px 8px 12px 50px;
+  padding: 12px 50px 12px 50px;
   user-select: none;
   cursor: pointer;
   position: relative;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 ul li::before {
@@ -240,13 +244,11 @@ label:after {
   top: 9px;
   z-index: 100;
 }
-
 #toggle-mode label svg.sun {
   left: 9px;
   fill: #fff;
   transition: 0.3s;
 }
-
 #toggle-mode label svg.moon {
   left: 100px;
   fill: #7e7e7e;
@@ -256,13 +258,14 @@ label:after {
 input:checked + label svg.sun path {
   fill: #7e7e7e;
 }
-
 input:checked + label svg.moon path {
   fill: #fff;
 }
 
 #header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -270,10 +273,6 @@ input:checked + label svg.moon path {
 
 #darkmode-toggle {
   position: absolute;
-}
-
-.dark-mode .content {
-  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

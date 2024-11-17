@@ -1,4 +1,4 @@
-@use "_property.scss";
+@use "property";
 
 * {
   margin: 0;
@@ -11,6 +11,7 @@
 }
 
 .container {
+
   width: 100%;
 
   min-height: 100vh;
@@ -21,89 +22,135 @@
     var(--color-linear-gradient2)
   );
 
-  padding: 10px;
-
   transition: --color-linear-gradient1 1.5s, --color-linear-gradient2 1.5s;
-}
 
-.container.dark-mode {
-  --color-linear-gradient1: #111111;
+  display: grid;
 
-  --color-linear-gradient2: #000000;
-}
+  justify-content: center;
 
-.todo-app {
+  grid-template-columns: 1fr;
 
-  width: 100%;
+  justify-items: center;
 
-  max-width: 540px;
 
-  background: #fff;
+  .todo-app {
 
-  margin: 100px auto 20px;
+    @media (max-width:1270px) {
 
-  padding: 40px 30px 70px;
+      padding: 40px 4vw 70px;
 
-  border-radius: 10px;
+    }
 
-}
+    width: 80%;
 
-.todo-app {
+    max-width: 540px;
 
-transition: 1.5s;
+    background: #fff;
 
-}
+    margin: 100px auto 20px;
 
-.dark-mode .todo-app {
+    padding: 40px 20px 70px;
 
-  background: #121214;
+    border-radius: 10px;
 
-}
+    min-height: 195px;
 
-.todo-app h2 {
-  color: #002765;
+    display: grid;
 
-  display: flex;
+    height: min-content;
 
-  align-items: center;
-}
+    transition: 1.5s;
 
-.dark-mode .todo-app h2 {
-  color: #fff;
+    h2 {
+      color: #002765;
 
-  transition: 1.5s;
+      display: flex;
 
-}
+      align-items: center;
 
-.todo-app h2 img {
-  width: 30px;
+      img {
+        width: 30px;
 
-  margin-left: 10px;
-}
+        margin-left: 10px;
+      }
 
-.row {
-  display: flex;
+    }
 
-  align-items: center;
+    .row {
+      display: flex;
 
-  justify-content: space-around;
+      align-items: center;
 
-  background-color: #edeef0;
+      justify-content: space-around;
 
-  border-radius: 30px;
+      background-color: #edeef0;
 
-  padding-left: 20px;
+      border-radius: 30px;
 
-  margin-bottom: 25px;
-}
+      padding-left: 20px;
 
-.row {
-  transition: 1.5s;
-}
+      margin-bottom: 25px;
 
-.dark-mode .row {
+      transition: 1.5s;
 
-  background-color: #343434;
+      position: relative;
+    }
+
+  }
+
+
+  &.dark-mode {
+
+    --color-linear-gradient1: #111111;
+
+    --color-linear-gradient2: #000000;
+
+    .todo-app {
+
+      background: #121214;
+
+      h2 {
+        color: #fff;
+
+        transition: 1.5s;
+
+      }
+
+      .row {
+
+        background-color: #343434;
+
+      }
+
+    }
+
+    .content {
+
+      color: #fff;
+
+    }
+
+    input {
+
+      color: #fff;
+
+    }
+
+    button {
+
+      background: #00D24E;
+
+      color: #121214;
+
+      &:hover {
+
+        background: #00a53d;
+
+      }
+
+    }
+
+  }
 
 }
 
@@ -120,11 +167,7 @@ input {
 
   font-weight: 14px;
 
-}
-
-.dark-mode input {
-
-color: #fff;
+  width: 100%;
 
 }
 
@@ -132,8 +175,6 @@ button {
   border: none;
 
   outline: none;
-
-  padding: 16px 50px;
 
   background: #ff5945;
 
@@ -144,28 +185,20 @@ button {
   cursor: pointer;
 
   border-radius: 40px;
-}
 
-button:hover {
+  position: relative;
 
-  background: #ad3c30;
+  height: 50px;
 
-  transition: 150ms;
+  width: 40%;
 
-}
+  &:hover {
 
-.dark-mode button {
+    background: #ad3c30;
 
-  background: #00D24E;
+    transition: 150ms;
 
-  color: #121214;
-
-}
-
-.dark-mode button:hover {
-
-  background: #00a53d;
-
+  }
 }
 
 ul li {
@@ -173,13 +206,17 @@ ul li {
 
   font-size: 17px;
 
-  padding: 12px 8px 12px 50px;
+  padding: 12px 50px 12px 50px;
 
   user-select: none;
 
   cursor: pointer;
 
   position: relative;
+
+  word-break: break-word;
+
+  hyphens: auto;
 }
 
 ul li::before {
@@ -285,6 +322,8 @@ ul li span:hover {
   height: 0;
 
   visibility: hidden;
+
+
 }
 
 #toggle-mode input:checked + label {
@@ -308,44 +347,57 @@ label:after {
   width: 40px;
 }
 
-#toggle-mode label svg {
-  position: absolute;
+#toggle-mode label {
 
-  width: 12px;
+  svg {
+    position: absolute;
 
-  height: 12px;
+    width: 12px;
 
-  top: 9px;
+    height: 12px;
 
-  z-index: 100;
+    top: 9px;
+
+    z-index: 100;
+  }
+
+  svg.sun {
+    left: 9px;
+
+    fill: #fff;
+
+    transition: 0.3s;
+  }
+
+  svg.moon {
+    left: 100px;
+
+    fill: #7e7e7e;
+
+    transition: 0.3s;
+  }
+
 }
 
-#toggle-mode label svg.sun {
-  left: 9px;
+input:checked + label {
 
-  fill: #fff;
+  svg.sun path {
+    fill: #7e7e7e;
+  }
 
-  transition: 0.3s;
+  svg.moon path {
+    fill: #fff;
+  }
+
 }
 
-#toggle-mode label svg.moon {
-  left: 100px;
-
-  fill: #7e7e7e;
-
-  transition: 0.3s;
-}
-
-input:checked + label svg.sun path {
-  fill: #7e7e7e;
-}
-
-input:checked + label svg.moon path {
-  fill: #fff;
-}
 
 #header {
   display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
 
   align-items: center;
 
@@ -356,10 +408,4 @@ input:checked + label svg.moon path {
 
 #darkmode-toggle {
   position: absolute;
-}
-
-.dark-mode .content {
-
-  color: #fff;
-
 }
