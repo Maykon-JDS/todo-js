@@ -1,0 +1,39 @@
+name: Version Updater #Nome do Workflow
+run-name: ${{ github.actor }} is Update Version with GitHub Actions 🚀 #Nome que será exibido na execução do workflow
+on: [ workflow_dispatch ] #Define que o workflow será executado quando um push for feito
+
+jobs:
+  #Define os tarefas que serão executados
+  Update-Version:
+    #Define o nome da tarefa dentro do workflow
+    runs-on: ubuntu-latest #Define qual sistema operacional a máquina que o workflow será executado
+    steps:
+    #Define as etapas do workflow
+
+    # name: Usado para dar um nome descritivo a uma etapa.
+    # run: Usado para um ou mais comandos no ambiente de execução do workflow
+    # uses: Permite que você utilize ações predefinidas fornecidas pela comunidade do GitHub.
+    # with: Usado para fornecer argumentos ou parâmetros para as ações.
+    # if: Usado para executar uma ação se uma condição estiver atendida.
+    # env: Permite que você defina variáveis de ambiente específicas para uma etapa.
+    # continue-on-error: Permite que você especifique se uma etapa deve continuar mesmo se houver erros.
+    # timeout-minutes: Permite que você defina um limite de tempo para a execução de uma etapa.
+    # timeout-seconds: Permite que você defina um limite de tempo para a execução de uma etapa.
+    # timeout-hours: Permite que você defina um limite de tempo para a execução de uma etapa.
+    # working-directory: Permite que você execute comandos em um diretório de trabalho específico.
+    # matrix: Permite criar matrizes de configuração para executar a mesma etapa com várias combinações de valores.
+    # needs: Permite que uma etapa dependa da conclusão de uma ou mais etapas anteriores.
+    # shell: Permite que você especifique o interpretador de shell a ser usado ao executar comandos.
+    - env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    - name: Check out repository code
+    - uses: actions/checkout@v4
+    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+    - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+    - name: List files in the repository
+    - run: ls ${{ github.workspace }}
+    - run: echo "🍏 This job's status is ${{ job.status }}."
+    - run: gh api https://api.github.com/repos/octocat/Spoon-Knife/issues
