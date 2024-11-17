@@ -7,6 +7,8 @@ jobs:
   Update-Version:
     #Define o nome da tarefa dentro do workflow
     runs-on: ubuntu-latest #Define qual sistema operacional a máquina que o workflow será executado
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
     #Define as etapas do workflow
 
