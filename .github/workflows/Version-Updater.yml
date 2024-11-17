@@ -27,4 +27,4 @@ jobs:
     # needs: Permite que uma etapa dependa da conclusão de uma ou mais etapas anteriores.
     # shell: Permite que você especifique o interpretador de shell a ser usado ao executar comandos.  
 
-    - run: gh api repos/{owner}/{repo}/releases/latest
+    - run: gh api repos/{owner}/{repo}/releases
